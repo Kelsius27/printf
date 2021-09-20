@@ -1,5 +1,5 @@
 
-SRCS	= ft_printf.c
+SRCS	= ft_printf.c ft_args1.c ft_itoa.c ft_utoa.c ft_ultoahex.c
 
 OBJS	= ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: kmarques <kmarques@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 18:07:41 by kmarques          #+#    #+#             */
-/*   Updated: 2021/09/09 18:54:14 by kmarques         ###   ########.fr       */
+/*   Updated: 2021/09/20 18:52:15 by kmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ int	ft_treatargs(const char *str, va_list args)
 		count = ft_treatchar(args);
 	if (*str == 's')
 		count = ft_treatstring(args);
+	//if (*str == 'p')
+	if ((*str == 'd') || (*str == 'i'))
+		count = ft_treatint(args);
+	if (*str == 'u')
+		count = ft_treatunsigint(args);
+	if ((*str == 'x') || (*str == 'X'))
+		count = ft_treathex(args, *str);
 	if (*str == '%')
 		write (1, "%", 1);
 	return (count);
