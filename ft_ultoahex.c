@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmarques <kmarques@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 20:15:36 by kmarques          #+#    #+#             */
-/*   Updated: 2021/09/20 20:38:51 by kmarques         ###   ########.fr       */
+/*   Created: 2021/09/21 16:34:26 by kmarques          #+#    #+#             */
+/*   Updated: 2021/09/21 16:39:38 by kmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_sizenum(unsigned int n)
+static unsigned int	ft_sizeunum(unsigned long n)
 {
-	int	size;
+	unsigned int	size;
 
 	size = 0;
 	while (n >= 16)
@@ -34,10 +34,10 @@ static int	ft_sizenum(unsigned int n)
  */
 char	*ft_ultoahex(unsigned long n, char c)
 {
-	char	*num;
-	int		size;
+	char			*num;
+	unsigned int	size;
 
-	size = ft_sizenum(n);
+	size = ft_sizeunum(n);
 	num = malloc((size + 1) * sizeof(char));
 	if (num == NULL)
 		return (NULL);

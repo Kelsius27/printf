@@ -6,20 +6,11 @@
 /*   By: kmarques <kmarques@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:50:59 by kmarques          #+#    #+#             */
-/*   Updated: 2021/09/20 20:38:56 by kmarques         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:27:22 by kmarques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_treatchar(va_list args)
-{
-	unsigned char	c;
-
-	c = va_arg(args, int);
-	write(1, &c, 1);
-	return (1);
-}
 
 int	ft_treatstring(va_list args)
 {
@@ -44,9 +35,9 @@ int	ft_treatstring(va_list args)
 
 int	ft_treatint(va_list args)
 {
-	int	count;
+	int			count;
 	const char	*s;
-	int	number;
+	int			number;
 
 	count = 0;
 	number = va_arg(args, int);
@@ -96,5 +87,25 @@ int	ft_treathex(va_list args, char c)
 		count++;
 	}
 	free((void *)(s - count));
+	return (count);
+}
+
+int	ft_treatpointer(va_list args)
+{
+	int				count;
+	const char		*s;
+	unsigned long	str;
+
+	write (1, "0x", 2);
+	count = 2;
+	str = va_arg(args, unsigned long);
+	s = ft_ultoahex(str, 'x');
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+		count++;
+	}
+	free((void *)(s - (count - 2)));
 	return (count);
 }
